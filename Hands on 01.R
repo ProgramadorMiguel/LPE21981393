@@ -81,6 +81,32 @@ df_low<-df_cambios %>% mutate(expensive = !rotulo %in% c("CEPSA", "REPSOL", "BP"
 #
 df_low   %>% select(precio_gasoleo_a, idccaa, rotulo, expensive)  %>% drop_na()   %>% group_by(idccaa, expensive)  %>% summarise(mean(precio_gasoleo_a))  %>% view()
 
+df_low   %>% view()
+#poner a la id el nombre de la comunidad y llamar ds21981393
+
+ccaa<- c("Andalucía",
+         "Aragón",
+         "Principado de Asturias",
+         "Illes Balears",
+         "Canarias",
+         "Cantabria",
+         "Castilla y León",
+         "Castilla-La Mancha",
+         "Cataluña",
+         "Comunitat Valenciana",
+         "Extremadura",
+         "Galicia",
+         "Comunidad de Madrid",
+         "Región de Murcia",
+         "Comunidad Foral de Navarra",
+         "País Vasco",
+         "La Rioja",
+         "Ciudad Autónoma de Ceuta",
+         "Ciudad Autónoma de Melilla")
+idcca<- c("01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19")
+df_ccaa <- data.frame(ccaa, idcca)
+ds21981393 <- merge(df_low,df_ccaa)
+ds21981393   %>% view()
 
 
 # READING AND WRITING (FILES) ---------------------------------------------------------
@@ -105,7 +131,7 @@ git diff comparar dos ramas
 git reset (commit) volver a un checkpoint
 git branch para ver en que rama estas
 git clean -n borrar archivos
-git remote 
+git remote -v para saber si estas enlazado 
 git rename oldname newname
 git push -u origin main
 
