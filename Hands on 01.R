@@ -3,7 +3,7 @@
 
 ## LENGUAJES DE PROGRAMACION ESTADISTICA
 ## PROFESOR: CHRISTIAN SUCUZHANAY AREVALO
-## ALUMNO: PABLO DORREGO, EXP 22040682
+## ALUMNO: MIGUEL PRIETO 21981393
 ## HANDS ON 01
 
 # SHORTCUTS ---------------------------------------------------------------
@@ -20,7 +20,7 @@ install.packages("tidyverse")
 install.packages("httr") ##instalador de paquetes
 library(tidyverse)
 library(httr)
-dp
+library(janitor)
 
 ## httr buscar archivos de internet
 ## janitor formatear y limpiar los datos
@@ -56,7 +56,7 @@ glimpse()
 #cambiamos las , por . en longitud y latitud 
 type_convert(df_source,locale =  )
 #cambiamos las , por . en longitud y latitud y lo imprimimos por pantalla con glimpse
-df_source  %>%  clean_names()  %>% type_convert(locale= locale(decimal_mark)= ",") %>%  glimpse()
+df_source  %>%  clean_names()  %>% type_convert(locale= locale(decimal_mark= ",")) %>%  glimpse()
 #Lo guardamos en una variable
 df_cambios <-df_source  %>% janitor::clean_names()  %>% type_convert(locale = locale(decimal_mark= ","))
 
@@ -103,15 +103,18 @@ ccaa<- c("Andalucía",
          "La Rioja",
          "Ciudad Autónoma de Ceuta",
          "Ciudad Autónoma de Melilla")
-idcca<- c("01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19")
-df_ccaa <- data.frame(ccaa, idcca)
+idccaa<- c("01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19")
+df_ccaa <- data.frame(ccaa, idccaa)
 ds21981393 <- merge(df_low,df_ccaa)
 ds21981393   %>% view()
+write.csv(ds21981393, "ds21981393_34")
+write.csv(df_low, "ds21981393_33")
 
 
 # READING AND WRITING (FILES) ---------------------------------------------------------
 
 glimpse(preciosEESS_es) #se usa mazo invierte la tabla
+
 
 # GIT COMMANDS ---------------------------------------------------------
 
@@ -139,9 +142,9 @@ git push -u origin main
 
 ls
 cd 
-pwd
+pwd 
 cd ..
-mkdir
+mkdir crear directorio
 touch
 nano
 less (te devuelve lo que hay dentro del archivo y deja moverte a través)
@@ -149,4 +152,5 @@ cat (te devuelve lo que hey dentro del archivo)
 where
 which
 
+# KAGGLE API COMMANDS --------------------------------------------------------
 
